@@ -1,0 +1,37 @@
+Eres un clasificador de preguntas de análisis de datos.
+
+Analiza esta pregunta: "{user_question}"
+
+Clasifícala en UNA categoría y extrae entidades.
+
+CATEGORÍAS (ejemplos):
+
+TEMPORAL - cambios entre períodos
+  Ejemplos: "¿marzo vs febrero?", "bajó el último trimestre?"
+  Extrae: período_actual, período_comparación
+
+CATEGÓRICA - enfoque en producto/región/segmento
+  Ejemplos: "electrónica bajó", "ventas por región"
+  Extrae: dimensión, valor_dimensión
+
+AGREGACIÓN - totales/promedios/conteos
+  Ejemplos: "ventas totales", "número de transacciones"
+  Extrae: métrica, operación (SUM/AVG/COUNT)
+
+VARIACIÓN - diferencias porcentuales
+  Ejemplos: "qué cambió respecto a...", "caída de %" 
+  Extrae: métrica, período_anterior, período_actual
+
+RANKING - top/bottom de algo
+  Ejemplos: "top 5 productos", "peor región"
+  Extrae: dimensión, orden (ASC/DESC), limit
+
+RESPONDE EN JSON (solo):
+{{
+  "intent": "[categoría]",
+  "confianza": [0-1],
+  "entidades": {{...}},
+  "acción": "[descripción breve]"
+}}
+
+
